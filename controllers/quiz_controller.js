@@ -4,7 +4,7 @@ var models=require('../models/models.js');
 
 // GET /quizes
 exports.index = function(req, res) {
-  models.Quiz.findAll().then(function(quiz) { // Aquí me parece que hay que cambiar quizes por quiz
+  models.Quiz.findAll().then(function(quizes) { // Aquí me parece que hay que cambiar quizes por quiz
     res.render('quizes/index.ejs', { quizes: quizes});
     })
   };
