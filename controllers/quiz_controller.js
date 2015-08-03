@@ -19,12 +19,12 @@ exports.show = function(req, res) {
 
 exports.answer = function(req, res) { // Esto se queda igual en teoría
   models.Quiz.find(req.params.quizId).then(function(quiz) { // Ahora buscará en la tabla quiz
-+    if (req.query.respuesta === quiz.respuesta) { // Compara si la respuesta y lo almacenado en la tabla es lo mismo
-+      res.render('quizes/answer', // Renderiza
-+                 { quiz: quiz, respuesta: 'Correcto' });
+    if (req.query.respuesta === quiz.respuesta) { // Compara si la respuesta y lo almacenado en la tabla es lo mismo
+      res.render('quizes/answer', // Renderiza
+                 { quiz: quiz, respuesta: 'Correcto' });
       } else {
         res.render('quizes/answer',  // Renderiza según la condición
-+                 { quiz: quiz, respuesta: 'Incorrecto'});
+                 { quiz: quiz, respuesta: 'Incorrecto'});
       }
     })
 };
