@@ -6,3 +6,4 @@ section > div        { padding: 20px; }
 header, nav, section { background: #eee; text-align: center;}
 footer               { background: #eee; text-align: center;} /*el footer puede ir junto con el header, nav, section, pero igual que se explica en el vídeo lo pongo separado*/
 nav span             { margin: 0px 10px 0px 0px;}
+#ErrorMsgs           { color: #f61; font-size: smaler}
