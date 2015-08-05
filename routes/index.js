@@ -19,8 +19,12 @@ router.get('/quizes/:quizId(\\d+)/answer', quizController.answer);
 router.get('/quizes/new',                  quizController.new);
 router.post('/quizes/create',              quizController.create);
 
-router.get('/author',function(req, res) {
-  res.render('author', { title: 'Créditos' });
+// router.get('/author',function(req, res) {
+  //res.render('author', { title: 'Créditos' });
+
+  router.get('/quizes/author',function(req, res) {
+   res.render('/quizes/author', { title: 'Créditos' });
+  
 });
 
 module.exports = router;
