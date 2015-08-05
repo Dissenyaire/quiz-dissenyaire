@@ -1,5 +1,4 @@
-var models=require('../models/models.js');
-
+var models = require('../models/models.js');
 
 // Autoload :id
 exports.load = function(req, res, next, quizId) {
@@ -8,38 +7,31 @@ exports.load = function(req, res, next, quizId) {
       if (quiz) {
         req.quiz = quiz;
         next();
-
       } else{next(new Error('No existe quizId=' + quizId))}
     }
-  ).catch(function(error){next(error)}); // aquí he quitado un punto y coma después del parentesis
+  ).catch(function(error){next(error)});
 };
-
 
 // GET /quizes
 exports.index = function(req, res) {
-    models.Quiz.findAll().then(
+  models.Quiz.findAll().then(
     function(quizes) {
-      // añadimos error, quitamos espacios y ponemos punto y coma
       res.render('quizes/index.ejs', {quizes: quizes, errors: []});
     }
-  // añadimos error, quitamos espacios y ponemos punto y coma
   ).catch(function(error){next(error)});
-  };
-
+};
 
 // GET /quizes/:id
 exports.show = function(req, res) {
-  // añadimos error
   res.render('quizes/show', { quiz: req.quiz, errors: []});
 };
 
-exports.answer = function(req, res) { // Esto se queda igual en teoría
+// GET /quizes/:id/answer
+exports.answer = function(req, res) {
   var resultado = 'Incorrecto';
   if (req.query.respuesta === req.quiz.respuesta) {
     resultado = 'Correcto';
   }
-
-  // añadimos error
   res.render(
     'quizes/answer',
     { quiz: req.quiz,
@@ -51,11 +43,10 @@ exports.answer = function(req, res) { // Esto se queda igual en teoría
 
 // GET /quizes/new
 exports.new = function(req, res) {
-  var quiz = models.Quiz.build(
+  var quiz = models.Quiz.build( // crea objeto quiz
     {pregunta: "Pregunta", respuesta: "Respuesta"}
   );
 
-  // añadimos error
   res.render('quizes/new', {quiz: quiz, errors: []});
 };
 
@@ -63,11 +54,6 @@ exports.new = function(req, res) {
 exports.create = function(req, res) {
   var quiz = models.Quiz.build( req.body.quiz );
 
-// guarda en DB los campos pregunta y respuesta de quiz
-  quiz.save({fields: ["pregunta", "respuesta"]}).then(function(){
-    res.redirect('/quizes');
-  })   // res.redirect: Redirección HTTP a lista de preguntas
-};
   quiz
   .validate()
   .then(
