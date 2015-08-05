@@ -1,8 +1,7 @@
-//Definición del modelo Quiz
+// Definicion del modelo de Quiz con validación
 
-module.exports = function (sequelize, DataTypes) {
-      // si no se rellena los campos muestra mensaje 
-      return sequelize.define(
+module.exports = function(sequelize, DataTypes) {
+  return sequelize.define(
   	'Quiz',
     { pregunta: {
         type: DataTypes.STRING,
