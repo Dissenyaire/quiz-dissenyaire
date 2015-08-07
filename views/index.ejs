@@ -1,2 +1,10 @@
-<h3>Bienvenido a <%= title %></h3>
-¡El portal donde podrá crear sus propios juegos!
+<table>
+  <% var i; for (i=0; i < quizes.length; i++) { %>
+    <tr>
+      <td><a href="quizes/<%= quizes[i].id %>"><%= quizes[i].pregunta %></a></td>
+      <td><a href="quizes/<%= quizes[i].id %>/edit"><button>editar</button></a></td>
+    </tr>
+  <% } %>
+</table>
+<p/>
+<a href="/quizes/new"><button>Crear pregunta</button></a>
