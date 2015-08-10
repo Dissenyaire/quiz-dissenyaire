@@ -102,5 +102,3 @@ exports.destroy = function(req, res) {
     res.redirect('/quizes');
   }).catch(function(error){next(error)});
 };
-
-//  console.log("req.quiz.id: " + req.quiz.id);
