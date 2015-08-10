@@ -4,7 +4,7 @@
       <td><a href="quizes/<%= quizes[i].id %>"><%= quizes[i].pregunta %></a></td>
       <td><a href="quizes/<%= quizes[i].id %>/edit"><button>editar</button></a></td>
       <td>
-        <form method="post" action="quizes/<%= quizes[i].id %>?_method=delete">
+        <form method="post" action="quizes/<%= quizes[i].id %>?_method="delete"> // Aquí no estaba las comillas del método.
           <button type="submit" onClick="return confirm('Borrar: <%= quizes[i].pregunta %>');">
             borrar
           </button>
